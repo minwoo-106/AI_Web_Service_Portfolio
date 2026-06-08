@@ -1,40 +1,49 @@
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-.ipynb_checkpoints/
-
-# Virtual env / secrets
+# Python
 .venv/
 venv/
+__pycache__/
+*.pyc
+
+# Environment
 .env
-*.env
-
-# ML model artifacts
-*.pt
-*.pth
-*.pkl
-*.joblib
-*.bin
-*.safetensors
-*.onnx
-
-# Runtime uploads / results
-uploads/
-results/
-static/uploads/
-static/results/
-outputs/
-
-# TensorBoard / logs
-runs/
-logs/
 *.log
 
-# RoadSafe old test folders
-RoadSafe_LLM_API/
-roadsafe_rag_v0_1/
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.bin
 
-# OS files
+# Training outputs
+runs/
+wandb/
+outputs/
+checkpoints/
+tensorboard/
+tensorboard_clean/
+vector_index/
+
+# Data / media
+data/raw/
+datasets/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Archives / backups
+export/
+archive/
+*.zip
+*.tar
+*.gz
+*.bak
+*.backup
+*.bak_*
+*_backup/
+
+# OS / IDE
 .DS_Store
-Thumbs.db
+.vscode/
+.idea/
