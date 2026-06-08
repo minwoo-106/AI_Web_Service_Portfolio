@@ -1,124 +1,82 @@
-# OTT ML Web Service
+# AI_Web_Service_Portfolio
 
-OTT 서비스 데이터를 기반으로 사용자 이탈 위험을 예측하고, 개인화된 콘텐츠 및 유지 전략을 제공하는 ML 기반 웹 서비스 프로젝트입니다.
+Flask 기반 메인 웹 UI를 중심으로 ML, Vision, LLM, VLM 기능을 REST API 방식으로 확장한 통합 AI 웹 서비스 포트폴리오입니다.
 
-본 프로젝트는 단순 머신러닝 모델 실험이 아니라, **DB 설계, Flask 서버 구축, 웹 UI 구현, ML 예측 기능 연동**까지 포함한 1차 통합 웹 서비스 프로젝트로 진행되었습니다.
+## Project Overview
 
-## 프로젝트 개요
+이 프로젝트는 교육 과정에서 진행한 AI 프로젝트들을 하나의 웹 서비스 구조로 통합한 포트폴리오입니다.
 
-* **프로젝트명**: OTT ML Web Service
-* **주제**: OTT 사용자 이탈 예측 및 개인화 유지 전략 제공
-* **핵심 기술**: Python, Flask, Machine Learning, Database Design, Web Service
-* **주요 기능**:
+초기에는 OTT 이탈 예측 ML 모델을 Flask 웹 서비스로 구현했고, 이후 자전거 헬멧 탐지 Vision API, 교통사고 상담 RoadSafe LLM API, 교통사고 영상 기반 법률·과실 쟁점 리포트 생성을 목표로 하는 RoadSafe VLM 모듈로 확장했습니다.
 
-  * 사용자 데이터 기반 이탈 위험도 예측
-  * 안정 / 주의 / 위험 사용자 그룹 분류
-  * 콘텐츠 추천 및 유지 전략 제공
-  * Flask 기반 웹 서버 구현
-  * DB 설계 및 웹 서비스 연동
+## Modules
 
-## 주요 기능
+### 1. Web Main / ML
 
-### 1. 사용자 이탈 위험 예측
+* OTT 구독 이탈 위험 예측
+* Flask 기반 메인 웹 UI
+* ML 모델 결과를 웹 화면에서 확인
+* 이후 Vision, LLM 기능을 REST API 방식으로 연결하는 포털 역할
 
-사용자의 시청 로그, 구독 정보, 결제 정보, 활동 데이터 등을 기반으로 구독 해지 가능성을 예측합니다.
+### 2. YOLO Vision
 
-예측 결과는 단순 수치가 아니라 서비스에서 활용 가능한 형태로 분류됩니다.
+* 자전거 라이더 헬멧 착용 여부 탐지
+* YOLO 기반 객체 탐지 모델 사용
+* Flask 메인 웹과 REST API 방식으로 연동
+* 교통안전 도메인 확장의 시작점
 
-* 안정 사용자
-* 주의 사용자
-* 위험 사용자
+### 3. RoadSafe LLM
 
-### 2. 개인화 유지 전략 제안
+* 도로교통 사고 상담 및 법률·과실 쟁점 리포트 생성
+* Llama 3.2 3B 기반 QLoRA fine-tuning 실험
+* 사고 유형, 사고 상황, 법률·과실 쟁점, 보험사 질문, 추가 자료, 행동 체크리스트 구조로 답변 생성
+* 출력 포맷 개선 및 semantic guardrail 적용
 
-이탈 위험도가 높은 사용자에게 적용 가능한 유지 전략을 제안합니다.
+### 4. RoadSafe VLM
 
-예시 전략은 다음과 같습니다.
+* 교통사고 영상 기반 법률·과실 쟁점 리포트 생성 시스템 예정
+* 블랙박스 또는 사고 현장 이미지에서 대표 프레임 추출
+* VLM으로 시각 정보 분석
+* RoadSafe LLM/RAG와 연결하여 사고 쟁점 리포트 생성 목표
 
-* 쿠폰 제공
-* 요금제 다운그레이드 제안
-* 개인화 콘텐츠 추천
-* 관심 장르 기반 콘텐츠 노출
-
-### 3. Flask 기반 웹 서비스
-
-머신러닝 모델을 단독 실행하는 구조가 아니라, Flask 서버를 통해 웹 페이지에서 기능을 사용할 수 있도록 구성했습니다.
-
-사용자는 웹 UI에서 데이터를 입력하거나 기능을 선택하고, 서버는 ML 모델 결과를 반환하는 구조로 동작합니다.
-
-### 4. DB 설계 및 데이터 흐름 구성
-
-사용자 정보, 콘텐츠 정보, 시청 기록, 구독 정보 등 서비스에 필요한 데이터를 구조화하기 위해 데이터베이스 설계를 수행했습니다.
-
-이를 통해 단순 분석 코드가 아니라 실제 서비스 형태에 가까운 데이터 흐름을 구성했습니다.
-
-## 시스템 구조
+## Repository Structure
 
 ```text
-사용자 웹 요청
-→ Flask 서버
-→ DB / 데이터 처리 모듈
-→ ML 예측 모델
-→ 이탈 위험도 및 유지 전략 반환
-→ 웹 화면 출력
+AI_Web_Service_Portfolio/
+├── ML_Project/
+├── web_main/
+├── yolo_vision/
+├── roadsafe_llm/
+├── roadsafe_vlm/
+├── docs/
+├── assets/
+├── README.md
+└── requirements.txt
 ```
 
-## 프로젝트 특징
+## Tech Stack
 
-* ML 모델을 웹 서비스에 연동한 첫 번째 통합 프로젝트
-* DB 설계와 서버 구조를 함께 고려한 서비스형 프로젝트
-* 이후 RoadSafe Vision, RoadSafe LLM FineTuning 프로젝트로 확장되는 기반 웹 구조 제공
-* 단순 모델 성능뿐 아니라 실제 사용 흐름과 화면 출력까지 고려
+* Python
+* Flask / FastAPI
+* REST API
+* Scikit-learn
+* YOLO / Ultralytics
+* PyTorch
+* Hugging Face Transformers
+* QLoRA / LoRA
+* Llama 3.2 3B
+* OpenCV
 
-## 기술 스택
+## Key Points
 
-| 구분               | 기술                 |
-| ---------------- | ------------------ |
-| Backend          | Python, Flask      |
-| Machine Learning | scikit-learn 계열 모델 |
-| Database         | SQL 기반 DB 설계       |
-| Frontend         | HTML, CSS          |
-| Data Processing  | pandas, numpy      |
-| Version Control  | Git, GitHub        |
+* 단일 Flask 웹 UI에서 여러 AI 기능을 API 방식으로 통합
+* ML, Vision, LLM, VLM으로 확장되는 단계형 프로젝트 구조
+* 단순 모델 실험이 아니라 웹 서비스 형태로 연결
+* 교통안전 도메인을 중심으로 Vision → LLM → VLM 확장
+* 작은 LLM의 한계를 보완하기 위해 출력 포맷 개선과 semantic guardrail 적용
 
-## 폴더 구조
+## Status
 
-```text
-OTT_ML_Web_Service/
-├─ OTT_Project/
-├─ Project_Plan/
-├─ project_report.pdf
-├─ requirements.txt
-└─ README.md
-```
-
-## 실행 방법
-
-프로젝트 실행 환경에 따라 필요한 패키지를 설치한 뒤 Flask 서버를 실행합니다.
-
-```bash
-pip install -r requirements.txt
-python app.py
-```
-
-실행 후 브라우저에서 로컬 서버 주소로 접속하여 웹 서비스를 확인할 수 있습니다.
-
-## 프로젝트 문서
-
-프로젝트 기획 및 결과 문서는 저장소 내 문서 파일에서 확인할 수 있습니다.
-
-* `Project_Plan/`
-* `project_report.pdf`
-
-## 한계점 및 개선 방향
-
-* 실제 서비스 수준의 대규모 사용자 데이터를 사용하지는 않았기 때문에 운영 환경 일반화에는 한계가 있습니다.
-* 추천 및 유지 전략은 향후 더 정교한 사용자 행동 분석과 결합하여 개선할 수 있습니다.
-* DB 구조와 Flask API를 더 세분화하면 이후 프로젝트와의 서비스 연동성을 높일 수 있습니다.
-* RoadSafe Vision 및 RoadSafe LLM 프로젝트처럼 독립 AI 기능을 REST API로 연결하는 구조로 확장할 수 있습니다.
-
-## 프로젝트 의의
-
-본 프로젝트는 머신러닝 모델을 단순히 학습시키는 데서 끝나지 않고, 데이터베이스 설계와 Flask 서버를 통해 웹 서비스 형태로 연결했다는 점에 의의가 있습니다.
-
-이후 진행한 RoadSafe Vision, RoadSafe LLM FineTuning 프로젝트의 기반이 되는 웹 서비스 및 API 연동 경험을 제공한 1차 프로젝트입니다.
+* ML Web Service: Completed
+* YOLO Vision API: Completed
+* RoadSafe LLM API: In Progress / Improving
+* RoadSafe VLM: Planned
