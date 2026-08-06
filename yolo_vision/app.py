@@ -29,7 +29,7 @@ VIDEO_EXTS = {".mp4", ".avi", ".mov", ".mkv"}
 
 CONF_THRESHOLD = 0.40
 # 영상에서 1프레임만 잠깐 튀는 오탐을 줄이기 위한 후처리 기준
-# 같은 클래스의 박스가 인접 프레임에서 한 번 더 확인될 때만 영상에 표시합니다.
+# 같은 클래스의 박스가 인접 프레임에서 한 번 더 확인될 때만 영상에 표시
 VIDEO_STABLE_IOU_THRESHOLD = 0.12
 VIDEO_STABLE_CENTER_RATIO = 0.85
 IMAGE_SIZE = 640
